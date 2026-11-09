@@ -15,15 +15,6 @@ public class baseClass extends DriverFactory {
     public String username = ConfigReader.getProperty("username");
     public String password = ConfigReader.getProperty("password");
 
-
-    public baseClass(){
-
-    }
-
-    public baseClass(WebDriver driver) {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-    }
-
     @BeforeTest
     public void setup(){
         driver = DriverFactory.initializeDriver();
@@ -34,6 +25,6 @@ public class baseClass extends DriverFactory {
 
     @AfterTest
     public void quitBrowser(){
-        driver.quit();
+        DriverFactory.quitDriver();
     }
 }
